@@ -8,7 +8,13 @@ import static java.lang.System.arraycopy;
 
 public class Wrapper {
 
-    public static void main(String[] ignore) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException, ClassNotFoundException, IOException {
+    public static void main(String[] ignore)
+        throws InvocationTargetException,
+            NoSuchMethodException,
+            IllegalAccessException,
+            ClassNotFoundException,
+            IOException,
+            NoSuchFieldException {
 
         ClassPathInjector injector = new ClassPathInjector();
 
@@ -28,20 +34,15 @@ public class Wrapper {
                 } else if (args[pos].charAt(0) != '-') {
                     arg = args[pos];
                 }
-                switch (flag) {
-                    case "-cp":
-                    case "--classpath":
-                    case "--class-path":
-                        for (String path: arg.split(";")) injector.appendClassPath(path);
-                        break;
-                    case "-jar":
-                        pos++;
-                        clazzMain = args[pos++];
-                        int lenOut = len - pos;
-                        argsOut = new String[lenOut];
-                        arraycopy(args, pos, argsOut, 0, lenOut);
-                        pos = len;
-                        break;
+                if ("-cp".equals(flag) || "--classpath".equals(flag) || "--class-path".equals(flag)) {
+                    for (String path : arg.split(";")) injector.appendClassPath(path);
+                } else if ("-jar".equals(flag)) {
+                    pos++;
+                    clazzMain = args[pos++];
+                    int lenOut = len - pos;
+                    argsOut = new String[lenOut];
+                    arraycopy(args, pos, argsOut, 0, lenOut);
+                    pos = len;
                 }
             }
         } while (pos < len);

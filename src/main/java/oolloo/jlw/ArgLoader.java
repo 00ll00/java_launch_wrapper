@@ -18,7 +18,7 @@ public class ArgLoader {
         StringBuilder sb = new StringBuilder();
 
         char[] chars = commandLine.toCharArray();
-        ArrayList<String> res = new ArrayList<>();
+        ArrayList<String> res = new ArrayList<String>();
 
         boolean inStr = false;
 
@@ -58,18 +58,20 @@ public class ArgLoader {
     private void loadNative() throws IOException {
         File tmp = File.createTempFile("libwrapper",".dll");
         tmp.deleteOnExit();
-        try (
-                InputStream is = ArgLoader.class.getResourceAsStream("/libwrapper.dll");
-                FileOutputStream os = new FileOutputStream(tmp)
-        ) {
+        InputStream is = ArgLoader.class.getResourceAsStream("/libwrapper.dll");
+        FileOutputStream os = new FileOutputStream(tmp);
+        assert is != null;
+        try {
             byte[] buffer = new byte[1024];
             int len;
-            assert is != null;
             while ((len = is.read(buffer)) != -1) {
                 os.write(buffer, 0, len);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
+        } finally {
+            is.close();
+            os.close();
         }
         System.load(tmp.getAbsolutePath());
     }

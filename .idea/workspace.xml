@@ -15,28 +15,15 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="41924501-41ea-47f6-a60b-a958fb456f4a" name="Changes" comment="init">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/cpp/ArgLoader.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/oolloo/jlw/ArgLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/oolloo/jlw/ClassPathInjector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/oolloo/jlw/Wrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Test.java" afterDir="false" />
+    <list default="true" id="41924501-41ea-47f6-a60b-a958fb456f4a" name="Changes" comment="v1.0">
+      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oolloo/jlw/ArgLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oolloo/jlw/ArgLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oolloo/jlw/ClassPathInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oolloo/jlw/ClassPathInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oolloo/jlw/Wrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oolloo/jlw/Wrapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,12 +105,12 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;cmake.loaded.for.project&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/GitRepository/jgit&quot;,
+    &quot;last_opened_file_path&quot;: &quot;J:/java_launch_wrapper/build/classes/java/测试&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;CMakeSettings&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -146,17 +133,6 @@
       <option name="MAIN_CLASS_NAME" value="Test" />
       <module name="java_launch_wrapper.test" />
       <option name="PROGRAM_PARAMETERS" value="啊啊啊 啊啊啊" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Wrapper" type="Application" factoryName="Application" temporary="true">
-      <classpathModifications>
-        <entry path="J:\java_launch_wrapper\build\classes\java\测试" />
-      </classpathModifications>
-      <option name="MAIN_CLASS_NAME" value="oolloo.jlw.Wrapper" />
-      <module name="java_launch_wrapper.main" />
-      <option name="PROGRAM_PARAMETERS" value="Test 123 abc 啊啊啊啊" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -187,10 +163,21 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="Wrapper Test" type="JarApplication">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/build/libs/java_launch_wrapper-1.0.jar" />
+      <option name="VM_PARAMETERS" value="-cp build\classes\java\测试" />
+      <option name="PROGRAM_PARAMETERS" value="Test 123 aaa 啊啊啊 &quot;aaa 啊啊啊&quot; &quot;a啊 \&quot; \\&quot;" />
+      <option name="WORKING_DIRECTORY" value="J:\java_launch_wrapper" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="F:\Java\jdk-18.0.2" />
+      <method v="2">
+        <option name="Gradle.BeforeRunTask" enabled="true" tasks="jar" externalProjectPath="$PROJECT_DIR$" vmOptions="" scriptParameters="" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Test" />
-      <item itemvalue="Application.Wrapper" />
       <item itemvalue="Gradle.java_launch_wrapper [jar]" />
+      <item itemvalue="JAR Application.Wrapper Test" />
     </list>
     <recent_temporary>
       <list>
@@ -213,7 +200,8 @@
       <workItem from="1658513285297" duration="336000" />
       <workItem from="1658582347816" duration="9051000" />
       <workItem from="1658641734123" duration="8748000" />
-      <workItem from="1658651039299" duration="3173000" />
+      <workItem from="1658651039299" duration="4070000" />
+      <workItem from="1658713211879" duration="3830000" />
     </task>
     <servers />
   </component>
@@ -230,6 +218,21 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="v1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="v1.0" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/oolloo/jlw/Wrapper.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="regexState">
     <option name="map">
