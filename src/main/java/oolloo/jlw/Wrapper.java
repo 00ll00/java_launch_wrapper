@@ -1,5 +1,6 @@
 package oolloo.jlw;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -35,7 +36,8 @@ public class Wrapper {
                     arg = args[pos];
                 }
                 if ("-cp".equals(flag) || "--classpath".equals(flag) || "--class-path".equals(flag)) {
-                    for (String path : arg.split(";")) injector.appendClassPath(path);
+                    System.setProperty("java.class.path", arg);
+                    for (String path : arg.split(File.pathSeparator)) injector.appendClassPath(path);
                 } else if ("-jar".equals(flag)) {
                     pos++;
                     clazzMain = args[pos++];
@@ -53,6 +55,6 @@ public class Wrapper {
         Class<?> clazz = ClassLoader.getSystemClassLoader().loadClass(mainClass);
         Method main = clazz.getDeclaredMethod("main", String[].class);
         main.setAccessible(true);
-        main.invoke(clazz, (Object) args);
+        main.invoke(null, (Object) args);
     }
 }

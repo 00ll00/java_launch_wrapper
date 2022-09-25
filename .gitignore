@@ -43,3 +43,4 @@ bin/
 /cmake-build-debug/
 /cmake-build-release/
 /src/main/resources/libwrapper.dll
+/logs/
