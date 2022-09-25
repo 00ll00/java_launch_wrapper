@@ -14,7 +14,8 @@ add_library(
         SHARED
         build/generated/sources/headers/java/main/oolloo_jlw_ArgLoader.h
         src/main/cpp/ArgLoader.cpp
-        )
+)
+target_link_libraries(wrapper -static-libgcc -static-libstdc++)
 
 set_target_properties(
         wrapper

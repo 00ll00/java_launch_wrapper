@@ -16,9 +16,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41924501-41ea-47f6-a60b-a958fb456f4a" name="Changes" comment="v1.1">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/cpp/ArgLoader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/cpp/ArgLoader.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oolloo/jlw/ArgLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oolloo/jlw/ArgLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oolloo/jlw/Wrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oolloo/jlw/Wrapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +31,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -74,6 +78,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="h6ov86k5" />
@@ -94,18 +99,20 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;cmake.loaded.for.project&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;J:/java_launch_wrapper/build/classes/java/测试&quot;,
+    &quot;last_opened_file_path&quot;: &quot;J:/java_launch_wrapper&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.externalTools&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -119,11 +126,6 @@
     </key>
   </component>
   <component name="RunManager" selected="JAR Application.Wrapper Test">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Test" />
       <module name="java_launch_wrapper.test" />
@@ -159,9 +161,9 @@
       <method v="2" />
     </configuration>
     <configuration name="Wrapper Test" type="JarApplication">
-      <option name="JAR_PATH" value="$PROJECT_DIR$/build/libs/java_launch_wrapper-1.0.jar" />
-      <option name="VM_PARAMETERS" value="-cp build\classes\java\测试" />
-      <option name="PROGRAM_PARAMETERS" value="Test 123 aaa 啊啊啊 &quot;aaa 啊啊啊&quot; &quot;a啊 \&quot; \\&quot;" />
+      <option name="JAR_PATH" value="$PROJECT_DIR$/build/libs/java_launch_wrapper-1.1.jar" />
+      <option name="VM_PARAMETERS" value="-XX:+UseG1GC -XX:-UseAdaptiveSizePolicy -XX:-OmitStackTraceInFastThrow -Dfml.ignoreInvalidMinecraftCertificates=True -Dfml.ignorePatchDiscrepancies=True -Dlog4j2.formatMsgNoLookups=true -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump -Dos.name=&quot;Windows 10&quot; -Dos.version=10.0 -Djava.library.path=&quot;F:\Minecraft\.minecraft\versions\1.19.1-OptiFine_H9_pre1\1.19.1-OptiFine_H9_pre1-natives&quot; -Dminecraft.launcher.brand=PCL2 -Dminecraft.launcher.version=262 -cp &quot;F:\测试测试;F:\Minecraft\.minecraft\libraries\com\mojang\logging\1.0.0\logging-1.0.0.jar;F:\Minecraft\.minecraft\libraries\com\mojang\blocklist\1.0.10\blocklist-1.0.10.jar;F:\Minecraft\.minecraft\libraries\com\mojang\patchy\2.2.10\patchy-2.2.10.jar;F:\Minecraft\.minecraft\libraries\com\github\oshi\oshi-core\5.8.5\oshi-core-5.8.5.jar;F:\Minecraft\.minecraft\libraries\net\java\dev\jna\jna\5.10.0\jna-5.10.0.jar;F:\Minecraft\.minecraft\libraries\net\java\dev\jna\jna-platform\5.10.0\jna-platform-5.10.0.jar;F:\Minecraft\.minecraft\libraries\org\slf4j\slf4j-api\1.8.0-beta4\slf4j-api-1.8.0-beta4.jar;F:\Minecraft\.minecraft\libraries\org\apache\logging\log4j\log4j-slf4j18-impl\2.17.0\log4j-slf4j18-impl-2.17.0.jar;F:\Minecraft\.minecraft\libraries\com\ibm\icu\icu4j\70.1\icu4j-70.1.jar;F:\Minecraft\.minecraft\libraries\com\mojang\javabridge\1.2.24\javabridge-1.2.24.jar;F:\Minecraft\.minecraft\libraries\net\sf\jopt-simple\jopt-simple\5.0.4\jopt-simple-5.0.4.jar;F:\Minecraft\.minecraft\libraries\io\netty\netty-common\4.1.77.Final\netty-common-4.1.77.Final.jar;F:\Minecraft\.minecraft\libraries\io\netty\netty-buffer\4.1.77.Final\netty-buffer-4.1.77.Final.jar;F:\Minecraft\.minecraft\libraries\io\netty\netty-codec\4.1.77.Final\netty-codec-4.1.77.Final.jar;F:\Minecraft\.minecraft\libraries\io\netty\netty-handler\4.1.77.Final\netty-handler-4.1.77.Final.jar;F:\Minecraft\.minecraft\libraries\io\netty\netty-resolver\4.1.77.Final\netty-resolver-4.1.77.Final.jar;F:\Minecraft\.minecraft\libraries\io\netty\netty-transport\4.1.77.Final\netty-transport-4.1.77.Final.jar;F:\Minecraft\.minecraft\libraries\io\netty\netty-transport-native-unix-common\4.1.77.Final\netty-transport-native-unix-common-4.1.77.Final.jar;F:\Minecraft\.minecraft\libraries\io\netty\netty-transport-classes-epoll\4.1.77.Final\netty-transport-classes-epoll-4.1.77.Final.jar;F:\Minecraft\.minecraft\libraries\com\google\guava\failureaccess\1.0.1\failureaccess-1.0.1.jar;F:\Minecraft\.minecraft\libraries\com\google\guava\guava\31.0.1-jre\guava-31.0.1-jre.jar;F:\Minecraft\.minecraft\libraries\org\apache\commons\commons-lang3\3.12.0\commons-lang3-3.12.0.jar;F:\Minecraft\.minecraft\libraries\commons-io\commons-io\2.11.0\commons-io-2.11.0.jar;F:\Minecraft\.minecraft\libraries\commons-codec\commons-codec\1.15\commons-codec-1.15.jar;F:\Minecraft\.minecraft\libraries\com\mojang\brigadier\1.0.18\brigadier-1.0.18.jar;F:\Minecraft\.minecraft\libraries\com\mojang\datafixerupper\5.0.28\datafixerupper-5.0.28.jar;F:\Minecraft\.minecraft\libraries\com\google\code\gson\gson\2.8.9\gson-2.8.9.jar;F:\Minecraft\.minecraft\libraries\com\mojang\authlib\3.11.50\authlib-3.11.50.jar;F:\Minecraft\.minecraft\libraries\org\apache\commons\commons-compress\1.21\commons-compress-1.21.jar;F:\Minecraft\.minecraft\libraries\org\apache\httpcomponents\httpclient\4.5.13\httpclient-4.5.13.jar;F:\Minecraft\.minecraft\libraries\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;F:\Minecraft\.minecraft\libraries\org\apache\httpcomponents\httpcore\4.4.14\httpcore-4.4.14.jar;F:\Minecraft\.minecraft\libraries\it\unimi\dsi\fastutil\8.5.6\fastutil-8.5.6.jar;F:\Minecraft\.minecraft\libraries\org\apache\logging\log4j\log4j-api\2.17.0\log4j-api-2.17.0.jar;F:\Minecraft\.minecraft\libraries\org\apache\logging\log4j\log4j-core\2.17.0\log4j-core-2.17.0.jar;F:\Minecraft\.minecraft\libraries\org\lwjgl\lwjgl\3.3.1\lwjgl-3.3.1.jar;F:\Minecraft\.minecraft\libraries\org\lwjgl\lwjgl\3.3.1\lwjgl-3.3.1-natives-windows.jar;F:\Minecraft\.minecraft\libraries\org\lwjgl\lwjgl\3.3.1\lwjgl-3.3.1-natives-windows-x86.jar;F:\Minecraft\.minecraft\libraries\org\lwjgl\lwjgl-jemalloc\3.3.1\lwjgl-jemalloc-3.3.1.jar;F:\Minecraft\.minecraft\libraries\org\lwjgl\lwjgl-jemalloc\3.3.1\lwjgl-jemalloc-3.3.1-natives-windows.jar;F:\Minecraft\.minecraft\libraries\org\lwjgl\lwjgl-jemalloc\3.3.1\lwjgl-jemalloc-3.3.1-natives-windows-x86.jar;F:\Minecraft\.minecraft\libraries\org\lwjgl\lwjgl-openal\3.3.1\lwjgl-openal-3.3.1.jar;F:\Minecraft\.minecraft\libraries\org\lwjgl\lwjgl-openal\3.3.1\lwjgl-openal-3.3.1-natives-windows.jar;F:\Minecraft\.minecraft\libraries\org\lwjgl\lwjgl-openal\3.3.1\lwjgl-openal-3.3.1-natives-windows-x86.jar;F:\Minecraft\.minecraft\libraries\org\lwjgl\lwjgl-opengl\3.3.1\lwjgl-opengl-3.3.1.jar;F:\Minecraft\.minecraft\libraries\org\lwjgl\lwjgl-opengl\3.3.1\lwjgl-opengl-3.3.1-natives-windows.jar;F:\Minecraft\.minecraft\libraries\org\lwjgl\lwjgl-opengl\3.3.1\lwjgl-opengl-3.3.1-natives-windows-x86.jar;F:\Minecraft\.minecraft\libraries\org\lwjgl\lwjgl-glfw\3.3.1\lwjgl-glfw-3.3.1.jar;F:\Minecraft\.minecraft\libraries\org\lwjgl\lwjgl-glfw\3.3.1\lwjgl-glfw-3.3.1-natives-windows.jar;F:\Minecraft\.minecraft\libraries\org\lwjgl\lwjgl-glfw\3.3.1\lwjgl-glfw-3.3.1-natives-windows-x86.jar;F:\Minecraft\.minecraft\libraries\org\lwjgl\lwjgl-stb\3.3.1\lwjgl-stb-3.3.1.jar;F:\Minecraft\.minecraft\libraries\org\lwjgl\lwjgl-stb\3.3.1\lwjgl-stb-3.3.1-natives-windows.jar;F:\Minecraft\.minecraft\libraries\org\lwjgl\lwjgl-stb\3.3.1\lwjgl-stb-3.3.1-natives-windows-x86.jar;F:\Minecraft\.minecraft\libraries\org\lwjgl\lwjgl-tinyfd\3.3.1\lwjgl-tinyfd-3.3.1.jar;F:\Minecraft\.minecraft\libraries\org\lwjgl\lwjgl-tinyfd\3.3.1\lwjgl-tinyfd-3.3.1-natives-windows.jar;F:\Minecraft\.minecraft\libraries\org\lwjgl\lwjgl-tinyfd\3.3.1\lwjgl-tinyfd-3.3.1-natives-windows-x86.jar;F:\Minecraft\.minecraft\libraries\com\mojang\text2speech\1.13.9\text2speech-1.13.9.jar;F:\Minecraft\.minecraft\libraries\com\mojang\text2speech\1.13.9\text2speech-1.13.9-natives-windows.jar;F:\Minecraft\.minecraft\libraries\optifine\OptiFine\1.19.1_HD_U_H9_pre1\OptiFine-1.19.1_HD_U_H9_pre1.jar;F:\Minecraft\.minecraft\libraries\optifine\launchwrapper-of\2.3\launchwrapper-of-2.3.jar;F:\Minecraft\.minecraft\versions\1.19.1-OptiFine_H9_pre1\1.19.1-OptiFine_H9_pre1.jar&quot; -Xmn256m -Xmx2764m -Dlog4j2.formatMsgNoLookups=true" />
+      <option name="PROGRAM_PARAMETERS" value="net.minecraft.launchwrapper.Launch --username 00ll00 --version 1.19.1-OptiFine_H9_pre1 --gameDir &quot;F:\Minecraft\.minecraft&quot; --assetsDir &quot;F:\Minecraft\.minecraft\assets&quot; --assetIndex 1.19 --uuid d568b4d5f2b84c698b4476112a045261 --accessToken eyJhbGciOiJIUzI1NiJ9.eyJ4dWlkIjoiMjUzNTQyODc4MTQzOTcwNyIsImFnZyI6IkFkdWx0Iiwic3ViIjoiYWJkMWZmZDktZjJlMy00Y2UyLWJjYWEtNTk1OWM2NDA0NTU4IiwibmJmIjoxNjYxMDgzNDM3LCJhdXRoIjoiWEJPWCIsInJvbGVzIjpbXSwiaXNzIjoiYXV0aGVudGljYXRpb24iLCJleHAiOjE2NjExNjk4MzcsImlhdCI6MTY2MTA4MzQzNywicGxhdGZvcm0iOiJVTktOT1dOIiwieXVpZCI6ImJhOTZmMTJmMGQxZDYzYjcyMWU0YjE5YzNkNTIzZWQyIn0.OI7_2rnuHB4lL58n4dTqQtl5G6k8Zn8cv2jyoqPGuL0 --clientId ${clientid} --xuid ${auth_xuid} --userType Mojang --versionType PCL2 --width 854 --height 480 --tweakClass optifine.OptiFineTweaker" />
       <option name="WORKING_DIRECTORY" value="$ProjectFileDir$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="ALTERNATIVE_JRE_PATH" value="F:\Java\jdk-18.0.2" />
@@ -196,7 +198,14 @@
       <workItem from="1658582347816" duration="9051000" />
       <workItem from="1658641734123" duration="8748000" />
       <workItem from="1658651039299" duration="4070000" />
-      <workItem from="1658713211879" duration="5656000" />
+      <workItem from="1658713211879" duration="6492000" />
+      <workItem from="1659507154606" duration="727000" />
+      <workItem from="1659686675683" duration="650000" />
+      <workItem from="1660990642881" duration="7389000" />
+      <workItem from="1661009844057" duration="2028000" />
+      <workItem from="1661050712370" duration="3683000" />
+      <workItem from="1661069641588" duration="4644000" />
+      <workItem from="1663055949196" duration="7000" />
     </task>
     <task id="LOCAL-00001" summary="v1.1">
       <created>1658717735037</created>
@@ -205,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658717735037</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="v1.1">
+      <created>1658719167617</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1658719167617</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,17 +242,6 @@
     <MESSAGE value="v1.0" />
     <MESSAGE value="v1.1" />
     <option name="LAST_COMMIT_MESSAGE" value="v1.1" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/oolloo/jlw/Wrapper.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="regexState">
     <option name="map">
