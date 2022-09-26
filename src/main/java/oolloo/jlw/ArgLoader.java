@@ -12,6 +12,8 @@ public class ArgLoader {
         loadNative();
         commandLine = getCommandLine();
 
+        System.out.println("cl: "+commandLine);
+
         int pos = 0;
         int length = commandLine.length();
 
