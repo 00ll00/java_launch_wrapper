@@ -1,4 +1,4 @@
-# Java Launch Wrapper (v1.1)
+# Java Launch Wrapper (v1.2)
 
 **用途：** 此 wrapper 使 java 能够正常添加启动命令行中包含特殊字符的 classpath 。
 
@@ -17,6 +17,12 @@
 ---
 
 ## 更新记录
+
+### V1.2
+
+- 修复对std库的依赖问题
+- 修复字符编码问题
+- 将获取到的classpath写入jvm系统属性`java.class.path`以确保被包装应用能读取到正确的值
 
 ### V1.1
 
