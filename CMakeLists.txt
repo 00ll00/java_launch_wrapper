@@ -6,8 +6,8 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(build/generated/sources/headers/java/main)
 include_directories(src/main/cpp)
 
-include_directories("C:/Program Files/Java/jdk1.8.0_241/include")
-include_directories("C:/Program Files/Java/jdk1.8.0_241/include/win32")
+include_directories("C:/Program Files/Java/jdk1.8.0_333/include")
+include_directories("C:/Program Files/Java/jdk1.8.0_333/include/win32")
 
 add_library(
         wrapper
@@ -15,7 +15,6 @@ add_library(
         build/generated/sources/headers/java/main/oolloo_jlw_ArgLoader.h
         src/main/cpp/ArgLoader.cpp
 )
-target_link_libraries(wrapper -static-libgcc -static-libstdc++)
 
 set_target_properties(
         wrapper

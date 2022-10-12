@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "oolloo"
-version = "1.2"
+version = "1.3"
 
 repositories {
     mavenCentral()

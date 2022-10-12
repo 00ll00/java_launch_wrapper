@@ -4,11 +4,15 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class ArgLoader {
+    private final boolean IS_JVM_64;
     private native String getCommandLine();
     public final String commandLine;
     public final String[] args;
 
     ArgLoader() throws IOException {
+
+        IS_JVM_64 = System.getProperty("sun.arch.data.model", System.getProperty("java.vm.name", "")).contains("64");
+
         loadNative();
         commandLine = getCommandLine();
 
@@ -56,9 +60,16 @@ public class ArgLoader {
     }
 
     private void loadNative() throws IOException {
-        File tmp = File.createTempFile("libwrapper",".dll");
+        File tmp;
+        InputStream is;
+        if (IS_JVM_64) {
+            tmp = File.createTempFile("libwrapper-",".dll");
+            is = ArgLoader.class.getResourceAsStream("/wrapper.dll");
+        } else {
+            tmp = File.createTempFile("libwrapper32-",".dll");
+            is = ArgLoader.class.getResourceAsStream("/wrapper32.dll");
+        }
         tmp.deleteOnExit();
-        InputStream is = ArgLoader.class.getResourceAsStream("/libwrapper.dll");
         FileOutputStream os = new FileOutputStream(tmp);
         assert is != null;
         try {
