@@ -1,4 +1,4 @@
-# Java Launch Wrapper (v1.2)
+# Java Launch Wrapper (v1.3)
 
 **用途：** 此 wrapper 使 java 能够正常添加启动命令行中包含特殊字符的 classpath 。
 
@@ -7,6 +7,9 @@
 > 原命令行：`java -cp "路径1";"路径2" MainClass 参数1 参数2`
 > 
 > 更改后：`java -cp "路径1";"路径2" -jar "java_launch_wrapper.jar" MainClass 参数1 参数2`
+
+若系统的临时文件路径中也存在特殊字符，可以在 -jar 前添加 `-Doolloo.jlw.tmpdir="<自定义临时文件路径>"` 更改。
+在这种情况下需要保证此路径存在。
 
 **注意：** 
 
@@ -17,6 +20,10 @@
 ---
 
 ## 更新记录
+
+### V1.3
+
+- 增加修改临时文件路径的启动参数
 
 ### V1.2
 

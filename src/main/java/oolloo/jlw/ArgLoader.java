@@ -60,13 +60,16 @@ public class ArgLoader {
     }
 
     private void loadNative() throws IOException {
-        File tmp;
+        File tmp_dir = new File(System.getProperty("oolloo.jlw.tmpdir", System.getProperty("java.io.tmpdir")));
+
         InputStream is;
+        File tmp;
+
         if (IS_JVM_64) {
-            tmp = File.createTempFile("libwrapper-",".dll");
+            tmp = new File(tmp_dir,"libwrapper.dll");
             is = ArgLoader.class.getResourceAsStream("/wrapper.dll");
         } else {
-            tmp = File.createTempFile("libwrapper32-",".dll");
+            tmp = new File(tmp_dir, "libwrapper32.dll");
             is = ArgLoader.class.getResourceAsStream("/wrapper32.dll");
         }
         tmp.deleteOnExit();
