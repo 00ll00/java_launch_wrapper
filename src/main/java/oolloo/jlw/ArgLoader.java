@@ -72,21 +72,24 @@ public class ArgLoader {
             tmp = new File(tmp_dir, "libwrapper32.dll");
             is = ArgLoader.class.getResourceAsStream("/wrapper32.dll");
         }
-        tmp.deleteOnExit();
-        FileOutputStream os = new FileOutputStream(tmp);
-        assert is != null;
-        try {
-            byte[] buffer = new byte[1024];
-            int len;
-            while ((len = is.read(buffer)) != -1) {
-                os.write(buffer, 0, len);
+
+        if (!tmp.exists()) {
+            FileOutputStream os = new FileOutputStream(tmp);
+            assert is != null;
+            try {
+                byte[] buffer = new byte[1024];
+                int len;
+                while ((len = is.read(buffer)) != -1) {
+                    os.write(buffer, 0, len);
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } finally {
+                is.close();
+                os.close();
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } finally {
-            is.close();
-            os.close();
         }
+
         System.load(tmp.getAbsolutePath());
     }
 }
