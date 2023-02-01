@@ -1,4 +1,4 @@
-# Java Launch Wrapper (v1.3.1)
+# Java Launch Wrapper (v1.3.2)
 
 **用途：** 此 wrapper 使 java 能够正常添加启动命令行中包含特殊字符的 classpath 。
 
@@ -25,6 +25,8 @@
 
 - 增加修改临时文件路径的启动参数
 - 修复 dll 被占用导致无法启动多个进程的问题
+- 增加 dll 文件校验
+- 增加必要的调试信息输出，可设置 `-Doolloo.jlw.silent=true` 关闭
 
 ### V1.2
 
