@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.zip.CRC32;
 
 public class ArgLoader {
-    @SuppressWarnings("FieldCanBeLocal") private final long CRC32_LIB32 = 0xB7F06136;
-    @SuppressWarnings("FieldCanBeLocal") private final long CRC32_LIB64 = 0x530B96F6;
+    @SuppressWarnings("FieldCanBeLocal") private final long CRC32_LIB32 = 0xB7F06136L;
+    @SuppressWarnings("FieldCanBeLocal") private final long CRC32_LIB64 = 0x530B96F6L;
     private final boolean IS_JVM_64;
     private native String getCommandLine();
     public final String commandLine;
@@ -69,10 +69,10 @@ public class ArgLoader {
         File lib;
 
         if (IS_JVM_64) {
-            lib = new File(tmp_dir,"libjlw-" + Wrapper.VERSION + ".dll");
+            lib = new File(tmp_dir,"libjlw-" + Wrapper.NATIVE_VERSION + ".dll");
             is = ArgLoader.class.getResourceAsStream("/wrapper.dll");
         } else {
-            lib = new File(tmp_dir, "libjlw32-" + Wrapper.VERSION + ".dll");
+            lib = new File(tmp_dir, "libjlw32-" + Wrapper.NATIVE_VERSION + ".dll");
             is = ArgLoader.class.getResourceAsStream("/wrapper32.dll");
         }
 

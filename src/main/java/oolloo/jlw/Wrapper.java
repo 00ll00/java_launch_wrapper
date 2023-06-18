@@ -9,7 +9,7 @@ import static java.lang.System.arraycopy;
 
 public class Wrapper {
 
-    static final String VERSION = "1.3.2";
+    static final String NATIVE_VERSION = "1.3.2";
 
     public static void main(String[] ignore)
         throws InvocationTargetException,
