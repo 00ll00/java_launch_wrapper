@@ -1,25 +1,44 @@
-# Java Launch Wrapper (v1.3.3)
+# Java Launch Wrapper (v1.4)
 
-**用途：** 此 wrapper 使 java 能够正常添加启动命令行中包含特殊字符的 classpath 。
+## 有什么用？
 
-**使用方法：** 更改 java 启动命令行，例如：
+如果你的 Windows 系统启用了 *Beta 版：使用Unicode UTF-8提供全球语言支持*，Java 可能会在读取命令行参数时使用错误的编码进行解码，导致一系列问题。
 
-> 原命令行：`java -cp "路径1";"路径2" MainClass 参数1 参数2`
+Bug 参考 [JDK-8272352](https://bugs.openjdk.org/browse/JDK-8272352)，已在 Java19 修复
+
+使用此 Wrapper 可用于修复 **Class Path** 和 **App 参数**中的乱码，解决大部分因此Bug无法运行的情况。
+
+## 怎么用？
+
+更改 Java 启动命令行，在 JVM 参数和主类之间插入`-jar java_launch_wrapper.jar`即可（需要 Java >= 1.6）。
+
+例如：
+
+> 原命令行：
 > 
-> 更改后：`java -cp "路径1";"路径2" -jar "java_launch_wrapper.jar" MainClass 参数1 参数2`
-
-若系统的临时文件路径中也存在特殊字符，可以在 -jar 前添加 `-Doolloo.jlw.tmpdir="<自定义临时文件路径>"` 更改。
-在这种情况下需要保证此路径存在。
+>     java -cp "路径1";"路径2" MainClass 参数1 参数2
+> 
+> 更改后：
+> 
+>     java -cp "路径1";"路径2" -jar "java_launch_wrapper.jar" MainClass 参数1 参数2
 
 **注意：** 
 
 1. 除`-jar`外原命令中的其他 jvm 选项可以直接保留，若原命令行中使用`-jar`则应该改为 ClassPath + MainClass 的形式。
-2. `-jar`选项一定放在所有 jvm 选项最后一项，否则会解析错误。
-3. 仅在 Windows 平台可用。
+2. Wrapper 会将动态链接库释放到系统临时目录，若系统的临时文件路径中也存在特殊字符，可以在 -jar 前添加 `-Doolloo.jlw.tmpdir="<自定义临时文件路径>"` 更改。
+   在这种情况下需要保证此路径存在且无特殊字符。
+3. 仅在 Windows 平台可用，因为这个 Bug 是 Windows 独家。
 
 ---
 
 ## 更新记录
+
+### V1.4
+
+- 支持 arm64 （未验证）
+- 减小库体积
+- 移除 dll 文件的 crc 校验
+- 移除 `-Doolloo.jlw.silent` 选项，改为设置 `-Doolloo.jlw.debug=true` 启用 wrapper 调试信息
 
 ### V1.3
 

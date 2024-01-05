@@ -1,7 +1,6 @@
 package oolloo.jlw;
 
 import java.io.File;
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -9,15 +8,9 @@ import static java.lang.System.arraycopy;
 
 public class Wrapper {
 
-    static final String NATIVE_VERSION = "1.3.2";
+    static final String NATIVE_VERSION = "1.4";
 
-    public static void main(String[] ignore)
-        throws InvocationTargetException,
-            NoSuchMethodException,
-            IllegalAccessException,
-            ClassNotFoundException,
-            IOException,
-            NoSuchFieldException {
+    public static void main(String[] ignore) throws Exception {
 
         ClassPathInjector injector = new ClassPathInjector();
 
@@ -60,8 +53,7 @@ public class Wrapper {
         main.invoke(null, (Object) args);
     }
 
-    static void log(String msg) {
-        if (System.getProperty("oolloo.jlw.silent", "").equals("true")) return;
-        System.out.println("jlw: " + msg);
+    static void debug(String msg) {
+        if (System.getProperty("oolloo.jlw.debug", "").equals("true")) System.out.println("jlw: " + msg);
     }
 }
