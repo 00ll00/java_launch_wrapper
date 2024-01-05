@@ -1,0 +1,3 @@
+[submodule "lib/jui"]
+	path = lib/jui
+	url = git@github.com:00ll00/jui.git
