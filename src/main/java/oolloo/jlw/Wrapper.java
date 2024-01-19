@@ -3,18 +3,21 @@ package oolloo.jlw;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Set;
 
 import static java.lang.System.arraycopy;
 
 public class Wrapper {
 
-    static final String NATIVE_VERSION = "1.4";
+    static final String NATIVE_VERSION = "1.4.0";
+
+    static final boolean DEBUG = System.getProperty("oolloo.jlw.debug", "").equals("true");
 
     public static void main(String[] ignore) throws Exception {
 
-        ClassPathInjector injector = new ClassPathInjector();
-
-        String[] args = new ArgLoader().args;
+        String[] args = ArgLoader.args;
         int pos = 1;
         final int len = args.length;
         String clazzMain = null;
@@ -30,9 +33,11 @@ public class Wrapper {
                 } else if (args[pos].charAt(0) != '-') {
                     arg = args[pos];
                 }
-                if ("-cp".equals(flag) || "--classpath".equals(flag) || "--class-path".equals(flag)) {
+                if (flag.startsWith("-D")) {
+                    System.setProperty(flag.substring(2), arg);
+                } else if ("-cp".equals(flag) || "--classpath".equals(flag) || "--class-path".equals(flag)) {
                     System.setProperty("java.class.path", arg);
-                    for (String path : arg.split(File.pathSeparator)) injector.appendClassPath(path);
+                    for (String path : arg.split(File.pathSeparator)) ClassPathInjector.appendClassPath(path);
                 } else if ("-jar".equals(flag)) {
                     pos++;
                     clazzMain = args[pos++];
@@ -47,6 +52,19 @@ public class Wrapper {
     }
 
     private static void invokeMain(String mainClass, String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+
+        if (DEBUG) {
+            debug(String.format("Main Class: %s", mainClass));
+            debug(String.format("App Arguments: %s", Arrays.toString(args)));
+            debug("System Properties:");
+
+            Set<Map.Entry<Object, Object>> s =  System.getProperties().entrySet();
+
+            for (Map.Entry<Object, Object> e : s) {
+                debug(String.format("  %s", e));
+            }
+        }
+
         Class<?> clazz = ClassLoader.getSystemClassLoader().loadClass(mainClass);
         Method main = clazz.getDeclaredMethod("main", String[].class);
         main.setAccessible(true);
@@ -54,6 +72,6 @@ public class Wrapper {
     }
 
     static void debug(String msg) {
-        if (System.getProperty("oolloo.jlw.debug", "").equals("true")) System.out.println("jlw: " + msg);
+        if (DEBUG) System.out.println("jlw: " + msg);
     }
 }

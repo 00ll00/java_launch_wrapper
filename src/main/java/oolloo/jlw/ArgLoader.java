@@ -5,17 +5,9 @@ import java.util.ArrayList;
 
 public class ArgLoader {
 
-    private native String getCommandLine();
-    public final String commandLine;
-    public final String[] args;
-
-    static {
-        try {
-            loadNative();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
+    private static native String getCommandLine();
+    public static final String commandLine;
+    public static final String[] args;
 
     private static void loadNative() throws Exception {
 
@@ -26,7 +18,7 @@ public class ArgLoader {
             arch = "x86";
         } else if (os_arch.equals("x86_64") || os_arch.equals("amd64")) {
             arch = "x86_64";
-        } else if (os_arch.equals("aarch64")) {
+        } else if (os_arch.equals("aarch64") || os_arch.equals("arm64")) {
             arch = "aarch64";
         } else {
             throw new Exception("unknown os.arch: " + os_arch);
@@ -34,17 +26,25 @@ public class ArgLoader {
 
         String lib_name = "libjlw-" + arch + "-" + Wrapper.NATIVE_VERSION + ".dll";
 
-        File tmp_dir = new File(System.getProperty("oolloo.jlw.tmpdir", System.getProperty("java.io.tmpdir")));
+        File tmp_dir = new File(System.getProperty("oolloo.jlw.tmpdir", System.getProperty("java.io.tmpdir", ".")));
+        if (!tmp_dir.exists()) {
+            tmp_dir = new File(".");
+        }
 
         File lib = new File(tmp_dir, lib_name);
 
         if (lib.exists()) {
             Wrapper.debug(String.format("native file exists: '%s'.", lib.getAbsolutePath()));
-            try {
-                System.load(lib.getAbsolutePath());
-                return;  // existing file is ok
-            } catch (UnsatisfiedLinkError ignored) {
-                Wrapper.debug(String.format("existing native file '%s' failed to load, trying to overwrite.", lib.getAbsolutePath()));
+            if (Wrapper.DEBUG) {
+                Wrapper.debug("delete old native file.");
+                if (!lib.delete()) throw new Exception();
+            } else {
+                try {
+                    System.load(lib.getAbsolutePath());
+                    return;  // existing file is ok
+                } catch (UnsatisfiedLinkError ignored) {
+                    Wrapper.debug(String.format("existing native file '%s' failed to load, trying to overwrite.", lib.getAbsolutePath()));
+                }
             }
         }
 
@@ -72,9 +72,18 @@ public class ArgLoader {
         System.load(lib.getAbsolutePath());
     }
 
-    ArgLoader() {
+    static {
+
+        try {
+            loadNative();
+            Wrapper.debug("native file loaded.");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         commandLine = getCommandLine();
+
+        Wrapper.debug(String.format("got command line: %s", commandLine));
 
         int pos = 0;
         int length = commandLine.length();
@@ -116,6 +125,6 @@ public class ArgLoader {
         if (sb.length() > 0) {
             res.add(sb.toString());
         }
-        this.args = res.toArray(new String[0]);
+        args = res.toArray(new String[0]);
     }
 }

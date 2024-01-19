@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "oolloo"
-version = "1.3.4"
+version = "1.4.0"
 
 repositories {
     mavenCentral()
@@ -16,7 +16,7 @@ java {
 
 tasks.register<Exec>("zigBuild") {
     mustRunAfter("clearLibs")
-    commandLine("zig", "build", "-Doptimize=ReleaseFast")
+    commandLine("zig12", "build", "-Doptimize=ReleaseFast")
 }
 
 tasks.register<Copy>("copyLibs") {
@@ -26,9 +26,13 @@ tasks.register<Copy>("copyLibs") {
     into("src/main/resources")
 }
 
+tasks.findByPath(":processResources")?.mustRunAfter("copyLibs")
+
 tasks.register<Delete>("clearLibs") {
     delete("zig-out/lib", "src/main/resources")
 }
+
+tasks.findByPath(":clean")?.dependsOn("clearLibs")
 
 tasks.jar {
 

@@ -10,9 +10,9 @@ import java.net.URLClassLoader;
 
 public class ClassPathInjector {
 
-    private final int JAVA_VER;
+    private static final int JAVA_VER;
 
-    ClassPathInjector() {
+    static {
         String ver = System.getProperty("java.specification.version");
         int pos = ver.indexOf('.');
         if (pos == -1) {
@@ -22,7 +22,7 @@ public class ClassPathInjector {
         }
     }
 
-    public void appendClassPath(String path) throws MalformedURLException, InvocationTargetException, NoSuchMethodException, IllegalAccessException, ClassNotFoundException, NoSuchFieldException {
+    public static void appendClassPath(String path) throws MalformedURLException, InvocationTargetException, NoSuchMethodException, IllegalAccessException, ClassNotFoundException, NoSuchFieldException {
         if (JAVA_VER <= 8) {
             appendClassPath8(path);
         } else {
@@ -30,14 +30,14 @@ public class ClassPathInjector {
         }
     }
 
-    private void appendClassPath8(String path) throws NoSuchMethodException, MalformedURLException, InvocationTargetException, IllegalAccessException {
+    private static void appendClassPath8(String path) throws NoSuchMethodException, MalformedURLException, InvocationTargetException, IllegalAccessException {
         URLClassLoader classLoader = (URLClassLoader) ClassLoader.getSystemClassLoader();
         Method add = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
         add.setAccessible(true);
         add.invoke(classLoader, new File(path).toURI().toURL());
     }
 
-    private void appendClassPath9(String path) throws ClassNotFoundException, NoSuchFieldException, NoSuchMethodException, IllegalAccessException, MalformedURLException, InvocationTargetException {
+    private static void appendClassPath9(String path) throws ClassNotFoundException, NoSuchFieldException, NoSuchMethodException, IllegalAccessException, MalformedURLException, InvocationTargetException {
         ClassLoader classLoader = ClassLoader.getSystemClassLoader();
         Class<?> clazz = classLoader.loadClass("jdk.internal.loader.BuiltinClassLoader");
         Class<?> ucpCls = classLoader.loadClass("jdk.internal.loader.URLClassPath");
