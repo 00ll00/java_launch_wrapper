@@ -24,6 +24,17 @@ tasks.register<Copy>("copyLibs") {
     from("zig-out/lib")
     include("**/*.dll")
     into("src/main/resources")
+
+    dependsOn("copyOldLib32")
+}
+
+// this task should be removed when new x86 lib available
+tasks.register<Copy>("copyOldLib32") {
+    mustRunAfter("zigBuild")
+    from("lib/legacy")
+    include("**/*.dll")
+    into("src/main/resources")
+    rename("wrapper32.dll","libjlw-x86-$version.dll")
 }
 
 tasks.findByPath(":processResources")?.mustRunAfter("copyLibs")

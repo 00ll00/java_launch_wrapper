@@ -36,7 +36,7 @@ Bug 参考 [JDK-8272352](https://bugs.openjdk.org/browse/JDK-8272352)，已在 J
 ### V1.4
 
 - 支持 arm64 （未验证）
-- 减小库体积
+- 使用 zig 编译 x86_64 和 arm64 的 native 库，去除无关依赖，减小库体积（x86 库测试失败，使用旧版）
 - 移除 dll 文件的 crc 校验
 - 移除 `-Doolloo.jlw.silent` 选项，改为设置 `-Doolloo.jlw.debug=true` 启用 wrapper 调试信息
 

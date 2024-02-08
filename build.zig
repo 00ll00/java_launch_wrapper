@@ -6,7 +6,7 @@ const Arch = std.Target.Cpu.Arch;
 const NATIVE_VERSION = "1.4.0";
 
 const TARGET_ARCH = [_]Arch{
-    .x86,
+    // .x86,
     .x86_64,
     .aarch64,
 };
