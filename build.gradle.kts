@@ -25,7 +25,7 @@ tasks.register<Copy>("copyLibs") {
     include("**/*.dll")
     into("src/main/resources")
 
-    dependsOn("copyOldLib32")
+//    dependsOn("copyOldLib32")
 }
 
 // this task should be removed when new x86 lib available
@@ -52,7 +52,7 @@ tasks.jar {
     manifest {
         attributes ( mapOf (
             "Main-Class" to "oolloo.jlw.Wrapper",
-            "Add-Opens" to "java.base/jdk.internal.loader"
+            "Add-Opens" to "java.base/jdk.internal.loader java.base/java.lang java.base/java.lang.reflect"
                 ) )
     }
 }

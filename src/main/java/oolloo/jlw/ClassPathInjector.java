@@ -8,29 +8,19 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 
+import static oolloo.jlw.Util.JAVA_VER;
+
 public class ClassPathInjector {
 
-    private static final int JAVA_VER;
-
-    static {
-        String ver = System.getProperty("java.specification.version");
-        int pos = ver.indexOf('.');
-        if (pos == -1) {
-            JAVA_VER = Integer.parseInt(ver);
-        } else {
-            JAVA_VER = Integer.parseInt(ver.substring(pos + 1));
-        }
-    }
-
     public static void appendClassPath(String path) throws MalformedURLException, InvocationTargetException, NoSuchMethodException, IllegalAccessException, ClassNotFoundException, NoSuchFieldException {
-        if (JAVA_VER <= 8) {
-            appendClassPath8(path);
-        } else {
+        if (JAVA_VER >= 9) {
             appendClassPath9(path);
+        } else {
+            appendClassPath6(path);
         }
     }
 
-    private static void appendClassPath8(String path) throws NoSuchMethodException, MalformedURLException, InvocationTargetException, IllegalAccessException {
+    private static void appendClassPath6(String path) throws NoSuchMethodException, MalformedURLException, InvocationTargetException, IllegalAccessException {
         URLClassLoader classLoader = (URLClassLoader) ClassLoader.getSystemClassLoader();
         Method add = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
         add.setAccessible(true);

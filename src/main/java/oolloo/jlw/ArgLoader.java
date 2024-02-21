@@ -3,6 +3,9 @@ package oolloo.jlw;
 import java.io.*;
 import java.util.ArrayList;
 
+import static oolloo.jlw.Util.DEBUG;
+import static oolloo.jlw.Util.debug;
+
 public class ArgLoader {
 
     private static native String getCommandLine();
@@ -34,22 +37,22 @@ public class ArgLoader {
         File lib = new File(tmp_dir, lib_name);
 
         if (lib.exists()) {
-            Wrapper.debug(String.format("native file exists: '%s'.", lib.getAbsolutePath()));
-            if (Wrapper.DEBUG) {
-                Wrapper.debug("delete old native file.");
+            debug(String.format("native file exists: '%s'.", lib.getAbsolutePath()));
+            if (DEBUG) {
+                debug("delete old native file.");
                 if (!lib.delete()) throw new Exception();
             } else {
                 try {
                     System.load(lib.getAbsolutePath());
                     return;  // existing file is ok
                 } catch (UnsatisfiedLinkError ignored) {
-                    Wrapper.debug(String.format("existing native file '%s' failed to load, trying to overwrite.", lib.getAbsolutePath()));
+                    debug(String.format("existing native file '%s' failed to load, trying to overwrite.", lib.getAbsolutePath()));
                 }
             }
         }
 
         // release dll file
-        Wrapper.debug(String.format("releasing native file to '%s'.", lib.getAbsolutePath()));
+        debug(String.format("releasing native file to '%s'.", lib.getAbsolutePath()));
 
         InputStream is = ArgLoader.class.getResourceAsStream("/" + lib_name);
         assert is != null;
@@ -76,14 +79,14 @@ public class ArgLoader {
 
         try {
             loadNative();
-            Wrapper.debug("native file loaded.");
+            debug("native file loaded.");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
         commandLine = getCommandLine();
 
-        Wrapper.debug(String.format("got command line: %s", commandLine));
+        debug(String.format("got command line: %s", commandLine));
 
         int pos = 0;
         int length = commandLine.length();

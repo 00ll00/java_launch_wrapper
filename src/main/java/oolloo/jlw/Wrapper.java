@@ -8,12 +8,12 @@ import java.util.Map;
 import java.util.Set;
 
 import static java.lang.System.arraycopy;
+import static oolloo.jlw.Util.DEBUG;
+import static oolloo.jlw.Util.debug;
 
 public class Wrapper {
 
     static final String NATIVE_VERSION = "1.4.0";
-
-    static final boolean DEBUG = System.getProperty("oolloo.jlw.debug", "").equals("true");
 
     public static void main(String[] ignore) throws Exception {
 
@@ -34,7 +34,11 @@ public class Wrapper {
                     arg = args[pos];
                 }
                 if (flag.startsWith("-D")) {
-                    System.setProperty(flag.substring(2), arg);
+                    String key = flag.substring(2);
+                    if (key.equals("java.library.path")) {
+                        LibPathReplacer.replaceUsrPath(arg);
+                    }
+                    System.setProperty(key, arg);
                 } else if ("-cp".equals(flag) || "--classpath".equals(flag) || "--class-path".equals(flag)) {
                     System.setProperty("java.class.path", arg);
                     for (String path : arg.split(File.pathSeparator)) ClassPathInjector.appendClassPath(path);
@@ -69,9 +73,5 @@ public class Wrapper {
         Method main = clazz.getDeclaredMethod("main", String[].class);
         main.setAccessible(true);
         main.invoke(null, (Object) args);
-    }
-
-    static void debug(String msg) {
-        if (DEBUG) System.out.println("jlw: " + msg);
     }
 }
