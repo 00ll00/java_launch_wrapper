@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "oolloo"
-version = "1.4.0"
+version = "1.4.1"
 
 repositories {
     mavenCentral()
@@ -25,7 +25,7 @@ tasks.register<Copy>("copyLibs") {
     include("**/*.dll")
     into("src/main/resources")
 
-//    dependsOn("copyOldLib32")
+    dependsOn("copyOldLib32")
 }
 
 // this task should be removed when new x86 lib available

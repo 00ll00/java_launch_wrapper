@@ -13,7 +13,7 @@ import static oolloo.jlw.Util.debug;
 
 public class Wrapper {
 
-    static final String NATIVE_VERSION = "1.4.0";
+    static final String NATIVE_VERSION = "1.4.1";
 
     public static void main(String[] ignore) throws Exception {
 
