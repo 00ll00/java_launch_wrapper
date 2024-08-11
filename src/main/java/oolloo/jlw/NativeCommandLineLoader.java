@@ -1,13 +1,10 @@
 package oolloo.jlw;
 
 import java.io.*;
-import java.util.ArrayList;
 
-public class ArgLoader {
+public class NativeCommandLineLoader implements CommandLineLoader {
 
     private static native String getCommandLine();
-    public static final String commandLine;
-    public static final String[] args;
 
     private static void loadNative() throws Exception {
 
@@ -51,7 +48,7 @@ public class ArgLoader {
         // release dll file
         Wrapper.debug(String.format("releasing native file to '%s'.", lib.getAbsolutePath()));
 
-        InputStream is = ArgLoader.class.getResourceAsStream("/" + lib_name);
+        InputStream is = NativeCommandLineLoader.class.getResourceAsStream("/" + lib_name);
         assert is != null;
 
         FileOutputStream os = new FileOutputStream(lib);
@@ -72,59 +69,12 @@ public class ArgLoader {
         System.load(lib.getAbsolutePath());
     }
 
-    static {
+    @Override
+    public String load() throws Exception {
 
-        try {
-            loadNative();
-            Wrapper.debug("native file loaded.");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        loadNative();
+        Wrapper.debug("native file loaded.");
 
-        commandLine = getCommandLine();
-
-        Wrapper.debug(String.format("got command line: %s", commandLine));
-
-        int pos = 0;
-        int length = commandLine.length();
-
-        StringBuilder sb = new StringBuilder();
-
-        char[] chars = commandLine.toCharArray();
-        ArrayList<String> res = new ArrayList<String>();
-
-        boolean inStr = false;
-
-        while (pos < length) {
-            char c = chars[pos++];
-            switch (c) {
-                case ' ':
-                case '\t':
-                    if (inStr) {
-                        sb.append(c);
-                    } else if (sb.length() > 0) {
-                        res.add(sb.toString());
-                        sb = new StringBuilder();
-                    }
-                    break;
-                case '\\':
-                    if (pos < length && (chars[pos] == '"' || chars[pos] == '\\')) {
-                        sb.append(chars[pos]);
-                        pos ++;
-                    } else {
-                        sb.append(c);
-                    }
-                    break;
-                case '"':
-                    inStr = !inStr;
-                    break;
-                default:
-                    sb.append(c);
-            }
-        }
-        if (sb.length() > 0) {
-            res.add(sb.toString());
-        }
-        args = res.toArray(new String[0]);
+        return getCommandLine();
     }
 }

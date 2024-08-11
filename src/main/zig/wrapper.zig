@@ -21,5 +21,5 @@ comptime {
         }
     }.inner;
 
-    jui.exportAs("oolloo.jlw.ArgLoader.getCommandLine", javaGetCommandLine);
+    jui.exportAs("oolloo.jlw.NativeCommandLineLoader.getCommandLine", javaGetCommandLine);
 }
