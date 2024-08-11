@@ -4,6 +4,7 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 /zig-cache/
+/.zig-cache/
 /zig-out/
 /src/main/resources/
 

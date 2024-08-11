@@ -35,7 +35,7 @@ Bug 参考 [JDK-8272352](https://bugs.openjdk.org/browse/JDK-8272352)，已在 J
 
 ### V1.4
 
-- 支持 arm64 （未验证）
+- 支持 arm64 以及其他无法正确加载 native 库的情况（使用 wmic）
 - 解析 `-D 参数` 并覆盖到 JVM 的 System.Properties
 - 使用 zig 编译 x86_64 和 arm64 的 native 库，去除无关依赖，减小库体积（x86 库测试失败，使用旧版）
 - 移除 dll 文件的 crc 校验
