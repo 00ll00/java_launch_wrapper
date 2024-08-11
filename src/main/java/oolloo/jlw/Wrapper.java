@@ -11,13 +11,49 @@ import static java.lang.System.arraycopy;
 
 public class Wrapper {
 
-    static final String NATIVE_VERSION = "1.4.0";
+    static final String NATIVE_VERSION = "1.4.1";
 
     static final boolean DEBUG = System.getProperty("oolloo.jlw.debug", "").equals("true");
 
-    public static void main(String[] ignore) throws Exception {
+    public static void main(String[] originArgs) throws Exception {
 
-        String[] args = ArgLoader.args;
+        if (DEBUG) {
+            debug("=====  Origin  =====");
+            debug(String.format("App Arguments: %s", Arrays.toString(originArgs)));
+            debug("System Properties:");
+
+            Set<Map.Entry<Object, Object>> s =  System.getProperties().entrySet();
+
+            for (Map.Entry<Object, Object> e : s) {
+                debug(String.format("  %s", e));
+            }
+
+            debug("====================");
+        }
+
+        String commandLine;
+
+        try {
+            commandLine = new NativeCommandLineLoader().load();
+        } catch (Exception e1) {
+            debug("native command line loader failed with exception:");
+            debug(e1.getMessage());
+            debug("try wmic command line loader.");
+            try {
+                commandLine = new WmicCommandLineLoader().load();
+            } catch (Exception e2) {
+                debug("wmic command line loader failed with exception:");
+                debug(e2.getMessage());
+                throw new Exception("All CommandLine Loaders Failed.");
+            }
+        }
+
+        debug(String.format("got command line: %s", commandLine));
+
+        String[] args = ArgParser.parse(commandLine);
+
+        debug(String.format("got raw args: %s", Arrays.toString(args)));
+
         int pos = 1;
         final int len = args.length;
         String clazzMain = null;
@@ -48,14 +84,11 @@ public class Wrapper {
                 }
             }
         } while (pos < len);
-        invokeMain(clazzMain, argsOut);
-    }
-
-    private static void invokeMain(String mainClass, String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
         if (DEBUG) {
-            debug(String.format("Main Class: %s", mainClass));
-            debug(String.format("App Arguments: %s", Arrays.toString(args)));
+            debug("===== Injected =====");
+            debug(String.format("Main Class: %s", clazzMain));
+            debug(String.format("App Arguments: %s", Arrays.toString(argsOut)));
             debug("System Properties:");
 
             Set<Map.Entry<Object, Object>> s =  System.getProperties().entrySet();
@@ -63,8 +96,14 @@ public class Wrapper {
             for (Map.Entry<Object, Object> e : s) {
                 debug(String.format("  %s", e));
             }
+
+            debug("====================");
         }
 
+        invokeMain(clazzMain, argsOut);
+    }
+
+    private static void invokeMain(String mainClass, String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Class<?> clazz = ClassLoader.getSystemClassLoader().loadClass(mainClass);
         Method main = clazz.getDeclaredMethod("main", String[].class);
         main.setAccessible(true);
