@@ -11,7 +11,7 @@ import static java.lang.System.arraycopy;
 
 public class Wrapper {
 
-    static final String NATIVE_VERSION = "1.4.1";
+    static final String NATIVE_VERSION = "1.4.2";
 
     static final boolean DEBUG = System.getProperty("oolloo.jlw.debug", "").equals("true");
 
@@ -38,11 +38,11 @@ public class Wrapper {
         } catch (Exception e1) {
             debug("native command line loader failed with exception:");
             debug(e1.getMessage());
-            debug("try wmic command line loader.");
+            debug("try cim command line loader.");
             try {
-                commandLine = new WmicCommandLineLoader().load();
+                commandLine = new CimCommandLineLoader().load();
             } catch (Exception e2) {
-                debug("wmic command line loader failed with exception:");
+                debug("cim command line loader failed with exception:");
                 debug(e2.getMessage());
                 throw new Exception("All CommandLine Loaders Failed.");
             }
