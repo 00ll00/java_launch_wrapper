@@ -1,4 +1,4 @@
-# Java Launch Wrapper (v1.4.0)
+# Java Launch Wrapper (v1.4.2)
 
 ## 有什么用？
 
