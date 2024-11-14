@@ -15,7 +15,7 @@ public class Wrapper {
 
     static final boolean DEBUG = System.getProperty("oolloo.jlw.debug", "").equals("true");
 
-    public static void main(String[] originArgs) throws Exception {
+    public static void main(String[] originArgs) throws Throwable {
 
         if (DEBUG) {
             debug("=====  Origin  =====");
@@ -35,7 +35,9 @@ public class Wrapper {
 
         try {
             commandLine = new NativeCommandLineLoader().load();
-        } catch (Exception e1) {
+        } catch (Throwable e1) {
+            // Additionally captures UnsatisfiedLinkError.
+            if (e1 instanceof Error && !(e1 instanceof UnsatisfiedLinkError)) throw e1;
             debug("native command line loader failed with exception:");
             debug(e1.getMessage());
             debug("try cim command line loader.");
