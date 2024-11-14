@@ -1,4 +1,4 @@
-# Java Launch Wrapper (v1.4.2)
+# Java Launch Wrapper (v1.4.3)
 
 ## 有什么用？
 
@@ -35,9 +35,10 @@ Bug 参考 [JDK-8272352](https://bugs.openjdk.org/browse/JDK-8272352)，已在 J
 
 ### V1.4
 
+- 修复未捕获`UnsatisfiedLinkError`未被捕获导致备用方案未被使用的问题
 - 支持 arm64 以及其他无法正确加载 native 库的情况（使用 powershell CIM cmdlet）
 - 解析 `-D 参数` 并覆盖到 JVM 的 System.Properties
-- 使用 zig 编译 x86_64 和 arm64 的 native 库，去除无关依赖，减小库体积（x86 库测试失败，使用旧版）
+- 使用 zig 编译 native 库，去除无关依赖，减小库体积
 - 移除 dll 文件的 crc 校验
 - 移除 `-Doolloo.jlw.silent` 选项，改为设置 `-Doolloo.jlw.debug=true` 启用 wrapper 调试信息
 

@@ -11,7 +11,7 @@ import static java.lang.System.arraycopy;
 
 public class Wrapper {
 
-    static final String NATIVE_VERSION = "1.4.2";
+    static final String NATIVE_VERSION = "1.4.3";
 
     static final boolean DEBUG = System.getProperty("oolloo.jlw.debug", "").equals("true");
 

@@ -1,9 +1,9 @@
-//! zig version: 0.12.0
+//! zig version: 0.13.0
 
 const std = @import("std");
 const Arch = std.Target.Cpu.Arch;
 
-const NATIVE_VERSION = "1.4.2";
+const NATIVE_VERSION = "1.4.3";
 
 const TARGET_ARCH = [_]Arch{
     .x86,
