@@ -3,7 +3,7 @@
 const std = @import("std");
 const Arch = std.Target.Cpu.Arch;
 
-const NATIVE_VERSION = "1.4.3";
+const NATIVE_VERSION = "1.4.4";
 
 const TARGET_ARCH = [_]Arch{
     .x86,

@@ -1,4 +1,4 @@
-# Java Launch Wrapper (v1.4.3)
+# Java Launch Wrapper (v1.4.4)
 
 ## 有什么用？
 
@@ -35,6 +35,7 @@ Bug 参考 [JDK-8272352](https://bugs.openjdk.org/browse/JDK-8272352)，已在 J
 
 ### V1.4
 
+- 在将 classpath 添加到 classloader 之前对 `!` 进行转义，修复 URLClassLoader 从 jar 中获取资源时可能得到错误 URL 的问题（PR #2 by @LokmenoWer）
 - 修复未捕获`UnsatisfiedLinkError`未被捕获导致备用方案未被使用的问题
 - 支持 arm64 以及其他无法正确加载 native 库的情况（使用 powershell CIM cmdlet）
 - 解析 `-D 参数` 并覆盖到 JVM 的 System.Properties
