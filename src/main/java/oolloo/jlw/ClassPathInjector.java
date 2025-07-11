@@ -22,6 +22,15 @@ public class ClassPathInjector {
         }
     }
 
+    private static URL transFilePathToURL(String filePath) throws MalformedURLException {
+        if (filePath == null || filePath.isEmpty()) {
+            throw new IllegalArgumentException("File path cannot be null or empty");
+        }
+        File file = new File(filePath);
+        String url = file.toURI().toURL().toString().replace("!", "%21");
+        return new URL(url);
+    }
+
     public static void appendClassPath(String path) throws MalformedURLException, InvocationTargetException, NoSuchMethodException, IllegalAccessException, ClassNotFoundException, NoSuchFieldException {
         if (JAVA_VER <= 8) {
             appendClassPath8(path);
@@ -34,7 +43,7 @@ public class ClassPathInjector {
         URLClassLoader classLoader = (URLClassLoader) ClassLoader.getSystemClassLoader();
         Method add = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
         add.setAccessible(true);
-        add.invoke(classLoader, new File(path).toURI().toURL());
+        add.invoke(classLoader, transFilePathToURL(path));
     }
 
     private static void appendClassPath9(String path) throws ClassNotFoundException, NoSuchFieldException, NoSuchMethodException, IllegalAccessException, MalformedURLException, InvocationTargetException {
@@ -45,6 +54,6 @@ public class ClassPathInjector {
         ucp.setAccessible(true);
         Method add = ucpCls.getDeclaredMethod("addURL", URL.class);
         add.setAccessible(true);
-        add.invoke(ucp.get(classLoader), new File(path).toURI().toURL());
+        add.invoke(ucp.get(classLoader), transFilePathToURL(path));
     }
 }
