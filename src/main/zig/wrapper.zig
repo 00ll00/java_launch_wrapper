@@ -1,12 +1,16 @@
 const std = @import("std");
 const mem = std.mem;
-const k32 = std.os.windows.kernel32;
+const win = std.os.windows;
 const jui = @import("jui");
 
 const jstring = jui.jstring;
 const jchar = jui.jchar;
 const jobject = jui.jobject;
 const JNIEnv = jui.JNIEnv;
+
+const k32 = struct {
+    pub extern "kernel32" fn GetCommandLineW() callconv(win.WINAPI) win.LPWSTR;
+};
 
 fn getCommandLine(jenv: *JNIEnv) !jstring {
     const cmd_line_w = k32.GetCommandLineW();
