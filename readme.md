@@ -1,5 +1,7 @@
 # Java Launch Wrapper (v1.4.4)
 
+_JLW 存在部分已知问题（见下方），如有需要可以尝试使用 [Java Encoding Patcher](https://github.com/00ll00/jep)_
+
 ## 有什么用？
 
 如果你的 Windows 系统启用了 *Beta 版：使用Unicode UTF-8提供全球语言支持*，Java 可能会在读取命令行参数时使用错误的编码进行解码，导致一系列问题。
@@ -30,6 +32,11 @@ Bug 参考 [JDK-8272352](https://bugs.openjdk.org/browse/JDK-8272352)，已在 J
 3. 仅在 Windows 平台可用，因为这个 Bug 是 Windows 独家。
 
 ---
+
+## 已知问题
+
+- 使用 java agent 且 agent 使用 classpath 中的类时，无法在 agent 加载前进行修补。
+- java9 及以上 module 相关的参数 （module path 等）无法修补。
 
 ## 更新记录
 
